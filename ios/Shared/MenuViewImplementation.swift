@@ -38,6 +38,7 @@ public class MenuViewImplementation: UIButton {
 
     @objc public var shouldOpenOnLongPress: Bool = false {
         didSet {
+            self.updateInteraction()
             self.setup()
         }
     }
@@ -51,14 +52,14 @@ public class MenuViewImplementation: UIButton {
     }
 
     @objc public var hitSlop: UIEdgeInsets = .zero
+    private var contextInteraction: UIContextMenuInteraction?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let interaction = UIContextMenuInteraction(delegate: self)
-        self.addInteraction(interaction)
+        self.updateInteraction()
         self.setup()
     }
-   
+
     public override func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         sendMenuOpen()
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ in
@@ -66,7 +67,7 @@ public class MenuViewImplementation: UIButton {
             return self.menu
         }
     }
-    
+
     public override func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willEndFor configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionAnimating?) {
         sendMenuClose()
     }
@@ -88,6 +89,21 @@ public class MenuViewImplementation: UIButton {
 
         self.menu = menu
         self.showsMenuAsPrimaryAction = !shouldOpenOnLongPress
+    }
+
+    private func updateInteraction() {
+        if shouldOpenOnLongPress {
+            if contextInteraction == nil {
+                let interaction = UIContextMenuInteraction(delegate: self)
+                self.addInteraction(interaction)
+                contextInteraction = interaction
+            }
+        } else {
+            if let interaction = contextInteraction {
+                self.removeInteraction(interaction)
+                contextInteraction = nil
+            }
+        }
     }
 
     public override func reactSetFrame(_ frame: CGRect) {
