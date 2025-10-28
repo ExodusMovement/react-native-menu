@@ -1,15 +1,15 @@
 {
-  "name": "MenuExample",
-  "displayName": "MenuExample",
-  "components": [
-    {
-      "appKey": "MenuExample",
-      "displayName": "MenuExample"
-    }
-  ],
-  "resources": {
-    "ios": ["dist/assets", "dist/main.ios.jsbundle"],
-    "macos": ["dist/assets", "dist/main.macos.jsbundle"],
-    "visionos": ["dist/assets", "dist/main.visionos.jsbundle"]
-  }
+	"name": "MenuExample",
+	"displayName": "MenuExample",
+	"components": [
+		{
+			"appKey": "MenuExample",
+			"displayName": "MenuExample"
+		}
+	],
+	"resources": {
+		"ios": ["dist/assets", "dist/main.ios.jsbundle"],
+		"macos": ["dist/assets", "dist/main.macos.jsbundle"],
+		"visionos": ["dist/assets", "dist/main.visionos.jsbundle"]
+	}
 }
