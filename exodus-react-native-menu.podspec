@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => "11.0", :visionos => "1.0"}
-  s.source       = { :git => "https://github.com/exodus-io/react-native-menu.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/ExodusMovement/react-native-menu.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
