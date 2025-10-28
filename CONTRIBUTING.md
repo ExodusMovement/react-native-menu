@@ -18,12 +18,6 @@ To start the packager:
 yarn start
 ```
 
-To run the example app on Android:
-
-```sh
-yarn android
-```
-
 To run the example app on iOS:
 
 ```sh
@@ -49,23 +43,7 @@ Remember to add tests for your change if possible. Run the unit tests by:
 yarn test
 ```
 
-To edit the Objective-C files, open `example/ios/MenuExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-menu`.
-
-To edit the Kotlin files, open `example/android` in Android studio and find the source files at `reactnativemenu` under `Android`.
-
-### Versioning in `MenuViewManager`
-
-As of the latest update, `com.reactnativemenu.MenuViewManager` has been refactored into an abstract base class, `MenuViewManagerBase`. Any React Native version-dependent changes should be implemented in the specific version folders under `reactNativeVersionPatch`.
-
-For consistency:
-
-- When making version-specific modifications, ensure you update the appropriate implementation of `MenuViewManager`:
-  - `src/reactNativeVersionPatch/75/MenuViewManager.kt` for React Native < 0.76
-  - `src/reactNativeVersionPatch/latest/MenuViewManager.kt` for React Native >= 0.76
-- If adding a new file that depends on React Native version, create folders under `reactNativeVersionPatch` for both `75` and `latest` and include the version-specific implementations there.
-- Update `build.gradle` to include the new file in the `sourceSets`, so it’s dynamically selected based on the React Native version.
-
-This approach ensures consistent version handling and clean separation of code across versions.
+To edit the Objective-C files, open `example/ios/MenuExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > exodus-react-native-menu`.
 
 ### Commit message convention
 
@@ -97,7 +75,6 @@ The `package.json` file contains various scripts for common tasks:
 - `yarn lint`: lint files with Biome.
 - `yarn test`: run unit tests with Jest.
 - `yarn start`: start the Metro server for the example app.
-- `yarn android`: run the example app on Android.
 - `yarn ios`: run the example app on iOS.
 
 ### Sending a pull request
@@ -111,7 +88,6 @@ When you're sending a pull request:
 - Review the documentation to make sure it looks good.
 - Follow the pull request template when opening a pull request.
 - For pull requests that change the API or implementation, discuss with maintainers first by opening an issue.
-- For version-dependent changes, follow the versioning structure for `MenuViewManager` outlined in the **Versioning in `MenuViewManager`** section. Ensure all version-specific files are included in `reactNativeVersionPatch` and referenced in `build.gradle`.
 
 ## Code of Conduct
 
