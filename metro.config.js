@@ -6,7 +6,7 @@ module.exports = makeMetroConfig({
 	watchFolders: [__dirname],
 	resolver: {
 		extraNodeModules: {
-			"@react-native-menu/menu": __dirname,
+			"@exodus/react-native-menu": __dirname,
 		},
 	},
 	transformer: {

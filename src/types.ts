@@ -52,12 +52,6 @@ export type MenuAction = {
 	 */
 	title: string;
 	/**
-	 * (Android only)
-	 * The action's title color.
-	 * @platform Android
-	 */
-	titleColor?: number | ColorValue;
-	/**
 	 * (iOS14+ only)
 	 * An elaborated title that explains the purpose of the action.
 	 * @platform iOS
@@ -74,26 +68,21 @@ export type MenuAction = {
 	 */
 	state?: MenuState;
 	/**
-	 * (Android and iOS13+ only)
+	 * (iOS13+ only)
 	 * - The action's image.
-	 * - Allows icon name included in project or system (Android) resources drawables and
-	 * in SF Symbol (iOS)
-	 * @example // (iOS)
+	 * - Allows icon name included in SF Symbol (iOS)
+	 * @example
 	 * image="plus"
-	 * @example // (Android)
-	 * image="ic_menu_add"
-	 * - TODO: Allow images other than those included in SF Symbol and resources drawables
 	 */
 	image?: string;
 	/**
-	 * (Android and iOS13+ only)
+	 * (iOS13+ only)
 	 * - The action's image color.
 	 */
 	imageColor?: number | ColorValue;
 	/**
-	 * (Android and iOS14+ only)
+	 * (iOS14+ only)
 	 * - Actions to be displayed in the sub menu
-	 * - On Android it does not support nesting next sub menus in sub menu item
 	 */
 	subactions?: MenuAction[];
 	/**
@@ -133,13 +122,6 @@ type MenuComponentPropsBase = {
 	title?: string;
 
 	/**
-	 * (Android API 23+)
-	 * Boolean value determines whether popup menu should be anchored
-	 * to right corner of parent view - default value is `false`
-	 * @platform Android
-	 */
-	isAnchoredToRight?: boolean;
-	/**
 	 * Determines if menu should open after long press or on normal press
 	 *
 	 * @default false
@@ -177,10 +159,9 @@ export type MenuComponentRef = {
 
 export type ProcessedMenuAction = Omit<
 	MenuAction,
-	"imageColor" | "titleColor" | "subactions"
+	"imageColor" | "subactions"
 > & {
 	imageColor: ReturnType<typeof processColor>;
-	titleColor: ReturnType<typeof processColor>;
 	subactions?: ProcessedMenuAction[];
 };
 

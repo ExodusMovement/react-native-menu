@@ -15,7 +15,6 @@ function processAction(action: MenuAction): ProcessedMenuAction {
 	return {
 		...action,
 		imageColor: processColor(action.imageColor),
-		titleColor: processColor(action.titleColor),
 		subactions: action.subactions?.map((subAction) => processAction(subAction)),
 	};
 }

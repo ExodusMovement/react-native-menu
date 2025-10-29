@@ -4,10 +4,6 @@ const project = (() => {
 		const { configureProjects } = require("react-native-test-app");
 
 		return configureProjects({
-			android: {
-				sourceDir: path.join("example", "android"),
-				manifestPath: path.join(__dirname, "example", "android"),
-			},
 			ios: {
 				sourceDir: path.join("example", "ios"),
 			},
@@ -19,8 +15,7 @@ const project = (() => {
 
 module.exports = {
 	dependencies: {
-		// Help rn-cli find and autolink this library
-		"@react-native-menu/menu": {
+		"@exodus/react-native-menu": {
 			root: __dirname,
 		},
 	},

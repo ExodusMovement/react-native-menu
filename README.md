@@ -1,26 +1,26 @@
-# @react-native-menu/menu
+# @exodus/react-native-menu
 
-![Supports Android, iOS][support-badge]![Github Action Badge][gha-badge] ![npm][npm-badge]
+![Supports iOS][support-badge]![Github Action Badge][gha-badge] ![npm][npm-badge]
 
-Android PopupMenu and iOS14+ UIMenu components for react-native.
+iOS14+ UIMenu components for react-native.
 Falls back to ActionSheet for versions below iOS14.
 
-| Android                                                                                                                        | iOS 14+                                                                                                                        | iOS 13                                                                                                                        |
-|--------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://user-images.githubusercontent.com/6936373/112418277-827ac380-8d6c-11eb-96e2-324487ff3dde.png" width="320" /> | <img src="https://user-images.githubusercontent.com/6936373/112418272-80b10000-8d6c-11eb-9edb-f91eeff0877e.png" width="320" /> | <img src="https://user-images.githubusercontent.com/6936373/98471162-cb9f0080-222d-11eb-89ef-9342a1f10893.png" width="320" /> |
+| iOS 14+                                                                                                                        | iOS 13                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://user-images.githubusercontent.com/6936373/112418272-80b10000-8d6c-11eb-9edb-f91eeff0877e.png" width="320" /> | <img src="https://user-images.githubusercontent.com/6936373/98471162-cb9f0080-222d-11eb-89ef-9342a1f10893.png" width="320" /> |
 
 ## Installation
 
 via npm:
 
 ```sh
-npm install @react-native-menu/menu
+npm install @exodus/react-native-menu
 ```
 
 via yarn:
 
 ```sh
-yarn add @react-native-menu/menu
+yarn add @exodus/react-native-menu
 ```
 
 ### Installing on iOS with React Native 0.63 and above
@@ -31,7 +31,7 @@ As a work around, look for lines in `[YourPrject].xcodeproj` under `LIBRARY_SEAR
 
 ## Linking
 
-The package is [automatically linked](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) when building the app. All you need to do is:
+The package is [automatically linked](https://github.com/react-native-community/cli/blob/master/autolinking.md) when building the app. All you need to do is:
 
 ```sh
 npx pod-install
@@ -40,18 +40,12 @@ npx pod-install
 ## Usage
 
 ```jsx
-import { MenuView, MenuComponentRef } from '@react-native-menu/menu';
-
-// ...
+import { MenuView, MenuComponentRef } from "@exodus/react-native-menu";
 
 const App = () => {
-  const menuRef = useRef<MenuComponentRef>(null);
+  const menuRef = useRef < MenuComponentRef > null;
   return (
     <View style={styles.container}>
-      <Button
-        title="Show Menu with ref (Android only)"
-        onPress={() => menuRef.current?.show()}
-      />
       <MenuView
         ref={menuRef}
         title="Menu Title"
@@ -60,62 +54,47 @@ const App = () => {
         }}
         actions={[
           {
-            id: 'add',
-            title: 'Add',
-            titleColor: '#2367A2',
-            image: Platform.select({
-              ios: 'plus',
-              android: 'ic_menu_add',
-            }),
-            imageColor: '#2367A2',
+            id: "add",
+            title: "Add",
+            titleColor: "#2367A2",
+            image: "plus",
+            imageColor: "#2367A2",
             subactions: [
               {
-                id: 'nested1',
-                title: 'Nested action',
-                titleColor: 'rgba(250,180,100,0.5)',
-                subtitle: 'State is mixed',
-                image: Platform.select({
-                  ios: 'heart.fill',
-                  android: 'ic_menu_today',
-                }),
-                imageColor: 'rgba(100,200,250,0.3)',
-                state: 'mixed',
+                id: "nested1",
+                title: "Nested action",
+                titleColor: "rgba(250,180,100,0.5)",
+                subtitle: "State is mixed",
+                image: "heart.fill",
+                imageColor: "rgba(100,200,250,0.3)",
+                state: "mixed",
               },
               {
-                id: 'nestedDestructive',
-                title: 'Destructive Action',
+                id: "nestedDestructive",
+                title: "Destructive Action",
                 attributes: {
                   destructive: true,
                 },
-                image: Platform.select({
-                  ios: 'trash',
-                  android: 'ic_menu_delete',
-                }),
+                image: "trash",
               },
             ],
           },
           {
-            id: 'share',
-            title: 'Share Action',
-            titleColor: '#46F289',
-            subtitle: 'Share action on SNS',
-            image: Platform.select({
-              ios: 'square.and.arrow.up',
-              android: 'ic_menu_share',
-            }),
-            imageColor: '#46F289',
-            state: 'on',
+            id: "share",
+            title: "Share Action",
+            titleColor: "#46F289",
+            subtitle: "Share action on SNS",
+            image: "square.and.arrow.up",
+            imageColor: "#46F289",
+            state: "on",
           },
           {
-            id: 'destructive',
-            title: 'Destructive Action',
+            id: "destructive",
+            title: "Destructive Action",
             attributes: {
               destructive: true,
             },
-            image: Platform.select({
-              ios: 'trash',
-              android: 'ic_menu_delete',
-            }),
+            image: "trash",
           },
         ]}
         shouldOpenOnLongPress={false}
@@ -137,36 +116,20 @@ It's also possible to obtain the `action` is a more React-ish, declarative fashi
 
 ### Props
 
-#### `ref` (Android only)
-
-Ref to the menu component.
-
-| Type | Required |
-|------|----------|
-| ref  | No       |
-
 ### `title` (iOS only)
 
 The title of the menu.
 
 | Type   | Required |
-|--------|----------|
+| ------ | -------- |
 | string | Yes      |
-
-### `isAnchoredToRight` (Android only)
-
-Boolean determining if menu should anchored to right or left corner of parent view.
-
-| Type    | Required |
-|---------|----------|
-| boolean | No       |
 
 ### `shouldOpenOnLongPress`
 
 Boolean determining if menu should open after long press or on normal press
 
 | Type    | Required |
-|---------|----------|
+| ------- | -------- |
 | boolean | No       |
 
 ### `actions`
@@ -174,7 +137,7 @@ Boolean determining if menu should open after long press or on normal press
 Actions to be displayed in the menu.
 
 | Type         | Required |
-|--------------|----------|
+| ------------ | -------- |
 | MenuAction[] | Yes      |
 
 ### `themeVariant` (iOS only)
@@ -182,7 +145,7 @@ Actions to be displayed in the menu.
 String to override theme of the menu. If you want to control theme universally across your app, [see this package](https://github.com/vonovak/react-native-theme-control).
 
 | Type                  | Required |
-|-----------------------|----------|
+| --------------------- | -------- |
 | enum('light', 'dark') | No       |
 
 #### `MenuAction`
@@ -201,12 +164,6 @@ export type MenuAction = {
    */
   title: string;
   /**
-   * (Android only)
-   * The action's title color.
-   * @platform Android
-   */
-  titleColor?: number | ColorValue;
-  /**
    * (iOS14+ only)
    * An elaborated title that explains the purpose of the action.
    * @platform iOS
@@ -223,25 +180,21 @@ export type MenuAction = {
    */
   state?: MenuState;
   /**
-   * (Android and iOS13+ only)
+   * (iOS13+ only)
    * - The action's image.
-   * - Allows icon name included in project or system (Android) resources drawables and
-   * in SF Symbol (iOS)
-   * @example // (iOS)
+   * - Allows icon name included in SF Symbol
+   * @example
    * image="plus"
-   * @example // (Android)
-   * image="ic_menu_add"
    */
   image?: string;
   /**
-   * (Android and iOS13+ only)
+   * (iOS13+ only)
    * - The action's image color.
    */
   imageColor?: number | ColorValue;
   /**
-   * (Android and iOS14+ only)
+   * (iOS14+ only)
    * - Actions to be displayed in the sub menu
-   * - On Android it does not support nesting next sub menus in sub menu item
    */
   subactions?: MenuAction[];
 };
@@ -275,11 +228,11 @@ The state of the action.
 ```ts
 /**
  * The state of the action.
- * - off: A constant indicating the menu element is in the “off” state.
- * - on: A constant indicating the menu element is in the “on” state.
- * - mixed: A constant indicating the menu element is in the “mixed” state.
+ * - off: A constant indicating the menu element is in the "off" state.
+ * - on: A constant indicating the menu element is in the "on" state.
+ * - mixed: A constant indicating the menu element is in the "mixed" state.
  */
-type MenuState = 'off' | 'on' | 'mixed';
+type MenuState = "off" | "on" | "mixed";
 ```
 
 ### `onPressAction`
@@ -288,7 +241,7 @@ Callback function that will be called when selecting a menu item.
 It will contain id of the given action.
 
 | Type                    | Required |
-|-------------------------|----------|
+| ----------------------- | -------- |
 | ({nativeEvent}) => void | No       |
 
 ### Events
@@ -298,7 +251,7 @@ It will contain id of the given action.
 Callback function that will be called when the menu is dismissed. This event fires at the start of the dismissal, before any animations complete.
 
 | Type       | Required |
-|------------|----------|
+| ---------- | -------- |
 | () => void | No       |
 
 #### `onOpenMenu`
@@ -306,19 +259,19 @@ Callback function that will be called when the menu is dismissed. This event fir
 Callback function that will be called when the menu is opened. This event fires right before the menu is displayed.
 
 | Type       | Required |
-|------------|----------|
+| ---------- | -------- |
 | () => void | No       |
 
 Example usage:
+
 ```jsx
 <MenuView
   onOpenMenu={() => {
-    console.log('Menu was opened');
+    console.log("Menu was opened");
   }}
   onCloseMenu={() => {
-    console.log('Menu was closed');
+    console.log("Menu was closed");
   }}
-  // ... other props
 >
   <View>
     <Text>Open Menu</Text>
@@ -326,58 +279,24 @@ Example usage:
 </MenuView>
 ```
 
-### Custom icons (Android)
-
-You might want to use custom icons in the MenuAction `image` attribute. To do so, follow these steps.
-
-1. Search for your icon on e.g. [Material Icons](https://fonts.google.com/icons), customize the fill, weight, grade etc.
-   to your liking and then press the `Android` tab and click `Download`. This wil download an xml file, e.g.
-   `search_24px.xml`. You can create your own icon or get it somewhere else, as long as it is in a format that Android
-   understands.
-2. If using bare react-native, copy the downloaded xml file to your `android/app/src/main/res/drawable` folder.
-   If you are using Expo, add a dependency
-   on [@expo/config-plugins,](https://www.npmjs.com/package/@expo/config-plugins) and then you can use
-   an [expo config plugin](./plugin/withAndroidDrawables.js) to copy the file from your `assets` folder to the drawable
-   folder. Copy the config plugin to your app and reference it in your `app.json` or `app.config.js` in the `plugins`
-   section like this:
-
-   ```json
-   {
-     "expo": {
-       "plugins": [
-         [
-           "./plugin/withAndroidDrawables",
-           {
-             "drawableFiles": [ "./assets/my_icon.xml" ]
-           }
-         ]
-       ]
-     }
-   }
-   ```
-3. In your `MenuAction` you can now reference the icon using its file name, without the `.xml` extension. For example,
-   `image: 'my_icon'` will use the `my_icon.xml` file you copied to the drawable folder.
-4. Remember to run a new build to see changes to these icons.
-
 ## Testing with Jest
 
 In some cases, you might want to mock the package to test your components. You can do this by using the `jest.mock` function.
 
 ```ts
-import type { MenuComponentProps } from '@react-native-menu/menu';
+import type { MenuComponentProps } from "@exodus/react-native-menu";
 
-jest.mock('@react-native-menu/menu', () => ({
+jest.mock("@exodus/react-native-menu", () => ({
   MenuView: jest.fn((props: MenuComponentProps) => {
-    const React = require('react');
+    const React = require("react");
 
     class MockMenuView extends React.Component {
       render() {
         return React.createElement(
-          'View',
+          "View",
           { testID: props.testID },
-          // Dynamically mock each action
-          props.actions.map(action =>
-            React.createElement('Button', {
+          props.actions.map((action) =>
+            React.createElement("Button", {
               key: action.id,
               title: action.title,
               onPress: () => {
@@ -385,7 +304,7 @@ jest.mock('@react-native-menu/menu', () => ({
                   props.onPressAction({ nativeEvent: { event: action.id } });
                 }
               },
-              testID: action.id
+              testID: action.id,
             })
           ),
           this.props.children
@@ -394,7 +313,7 @@ jest.mock('@react-native-menu/menu', () => ({
     }
 
     return React.createElement(MockMenuView, props);
-  })
+  }),
 }));
 ```
 
@@ -406,6 +325,6 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 MIT
 
-[gha-badge]: https://github.com/react-native-menu/menu/workflows/Build/badge.svg
-[npm-badge]: https://img.shields.io/npm/v/@react-native-menu/menu.svg?style=flat-square
-[support-badge]: https://img.shields.io/badge/platforms-android%20|%20ios-lightgrey.svg?style=flat-square
+[gha-badge]: https://github.com/exodus-io/react-native-menu/workflows/Build/badge.svg
+[npm-badge]: https://img.shields.io/npm/v/@exodus/react-native-menu.svg?style=flat-square
+[support-badge]: https://img.shields.io/badge/platforms-ios-lightgrey.svg?style=flat-square

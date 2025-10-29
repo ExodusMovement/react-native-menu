@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Button, Platform, StyleSheet, Text, View } from "react-native";
-import { MenuView, type MenuComponentRef } from "@react-native-menu/menu";
+import { StyleSheet, Text, View } from "react-native";
+import { MenuView, type MenuComponentRef } from "@exodus/react-native-menu";
 import { useRef } from "react";
 
 export const App = () => {
@@ -9,10 +9,6 @@ export const App = () => {
 
 	return (
 		<View style={styles.container}>
-			<Button
-				title="Show Menu with ref (Android only)"
-				onPress={() => menuRef.current?.show()}
-			/>
 			<MenuView
 				ref={menuRef}
 				title="Menu Title"
@@ -23,22 +19,14 @@ export const App = () => {
 					{
 						id: "add",
 						title: "Add to List",
-						titleColor: "#2367A2",
-						image: Platform.select({
-							ios: "plus",
-							android: "ic_menu_add",
-						}),
+						image: "plus",
 						imageColor: "#2367A2",
 						subactions: [
 							{
 								id: "nested1",
 								title: "Nested action",
-								titleColor: "rgba(250,180,100,0.5)",
 								subtitle: "State is mixed",
-								image: Platform.select({
-									ios: "heart.fill",
-									android: "ic_menu_today",
-								}),
+								image: "heart.fill",
 								imageColor: "rgba(100,200,250,0.3)",
 								state: "mixed",
 							},
@@ -48,46 +36,31 @@ export const App = () => {
 								attributes: {
 									destructive: true,
 								},
-								image: Platform.select({
-									ios: "trash",
-									android: "ic_menu_delete",
-								}),
+								image: "trash",
 							},
 						],
 					},
 					{
 						id: "share",
 						title: "Share Action",
-						titleColor: "#46F289",
 						subtitle: "Share action on SNS",
-						image: Platform.select({
-							ios: "square.and.arrow.up",
-							android: "ic_menu_share",
-						}),
+						image: "square.and.arrow.up",
 						imageColor: "#46F289",
 						state: "on",
 					},
 					{
 						id: "mixed",
 						title: "Mixed State",
-						titleColor: "rgba(100,200,250,0.3)",
 						subtitle: "State is mixed",
-						image: Platform.select({
-							ios: "heart.fill",
-							android: "ic_menu_today",
-						}),
+						image: "heart.fill",
 						imageColor: "rgba(100,200,250,0.3)",
 						state: "mixed",
 						subactions: [
 							{
 								id: "nested2",
 								title: "Nested action",
-								titleColor: "rgba(250,180,100,0.5)",
 								subtitle: "State is mixed",
-								image: Platform.select({
-									ios: "tray",
-									android: "ic_menu_agenda",
-								}),
+								image: "tray",
 								imageColor: "rgba(100,200,250,0.3)",
 								state: "mixed",
 							},
@@ -95,10 +68,7 @@ export const App = () => {
 								id: "nestedMixed",
 								title: "Mixed State",
 								subtitle: "State is mixed",
-								image: Platform.select({
-									ios: "heart.fill",
-									android: "ic_menu_today",
-								}),
+								image: "heart.fill",
 								imageColor: "#46F289",
 								subactions: [
 									{
@@ -108,10 +78,7 @@ export const App = () => {
 										attributes: {
 											disabled: true,
 										},
-										image: Platform.select({
-											ios: "tray",
-											android: "ic_menu_agenda",
-										}),
+										image: "tray",
 									},
 									{
 										id: "nestednestedhidden",
@@ -127,10 +94,7 @@ export const App = () => {
 										attributes: {
 											destructive: true,
 										},
-										image: Platform.select({
-											ios: "trash",
-											android: "ic_menu_delete",
-										}),
+										image: "trash",
 									},
 								],
 							},
@@ -143,10 +107,7 @@ export const App = () => {
 						attributes: {
 							disabled: true,
 						},
-						image: Platform.select({
-							ios: "tray",
-							android: "ic_menu_agenda",
-						}),
+						image: "tray",
 					},
 					{
 						id: "hidden",
@@ -162,10 +123,7 @@ export const App = () => {
 						attributes: {
 							destructive: true,
 						},
-						image: Platform.select({
-							ios: "trash",
-							android: "ic_menu_delete",
-						}),
+						image: "trash",
 					},
 				]}
 				themeVariant={themeVariant}

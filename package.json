@@ -1,7 +1,7 @@
 {
-  "name": "@react-native-menu/menu",
+  "name": "@exodus/react-native-menu",
   "version": "2.0.0",
-  "description": "UIMenu component for react-native",
+  "description": "UIMenu component for react-native (iOS only)",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",
@@ -10,18 +10,17 @@
   "files": [
     "src",
     "lib",
-    "android",
     "ios",
     "cpp",
-    "react-native-menu.podspec",
+    "exodus-react-native-menu.podspec",
+    "!example",
     "!lib/typescript/example",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__"
   ],
   "scripts": {
-    "android": "react-native run-android",
-    "bootstrap": "yarn && yarn generateRntaManifest",
+    "bootstrap": "yarn",
     "format": "biome format --write .",
     "ios": "react-native run-ios",
     "lint": "biome lint --write .",
@@ -30,21 +29,19 @@
     "release": "release-it",
     "start": "react-native start",
     "test": "jest",
-    "typescript": "tsc --noEmit",
-    "generateRntaManifest": "node node_modules/react-native-test-app/android/android-manifest.js example/app.json example/android/app/build/generated/rnta/src/main/AndroidManifest.xml"
+    "typescript": "tsc --noEmit"
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "ios"
   ],
-  "repository": "https://github.com/react-native-menu/menu",
+  "repository": "https://github.com/ExodusMovement/react-native-menu",
   "author": "Jesse Katsumata <jesse.katsumata@gmail.com> (https://github.com/Naturalclar)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-native-menu/menu/issues"
+    "url": "https://github.com/ExodusMovement/react-native-menu/issues"
   },
-  "homepage": "https://github.com/react-native-menu/menu#readme",
+  "homepage": "https://github.com/ExodusMovement/react-native-menu#readme",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@callstack/react-native-visionos": "^0.79.6",
