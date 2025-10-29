@@ -5,7 +5,8 @@
 //  Created by Jesse Katsumata on 11/8/20.
 //
 
-import UIKit;
+import UIKit
+import React
 
 @available(iOS 13.0, *)
 class RCTMenuAction {

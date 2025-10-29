@@ -1,7 +1,7 @@
 PODS:
   - boost (1.84.0)
   - DoubleConversion (1.1.6)
-  - exodus-react-native-menu (2.0.0):
+  - exodus-react-native-menu (2.0.0-exodus-3):
     - boost
     - DoubleConversion
     - fast_float
@@ -2556,7 +2556,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
-  exodus-react-native-menu: 385793304ec969ac1178819e84a8ff08f8b2354e
+  exodus-react-native-menu: 98b154ebc3e9fe00e2700effec239473aa8336ee
   fast_float: b32c788ed9c6a8c584d114d0047beda9664e7cc6
   FBLazyVector: b8f1312d48447cca7b4abc21ed155db14742bd03
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd

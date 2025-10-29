@@ -1,9 +1,5 @@
 #ifdef RCT_NEW_ARCH_ENABLED
-#if __has_include(<exodus_react_native_menu/exodus_react_native_menu-Swift.h>)
-#import <exodus_react_native_menu/exodus_react_native_menu-Swift.h>
-#else
-#import <exodus_react_native_menu-Swift.h>
-#endif
+#import "exodus-react-native-menu-Swift.h"
 #import "MenuView.h"
 
 #import <react/renderer/components/RNMenuViewSpec/ComponentDescriptors.h>

@@ -1,3 +1,4 @@
+import React
 @objc(LegacyActionSheetView)
 public class LegacyActionSheetView: ActionSheetView {
     @objc var onPressAction: RCTDirectEventBlock?

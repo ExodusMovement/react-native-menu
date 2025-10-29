@@ -1,4 +1,5 @@
 import UIKit
+import React
 @available(iOS 14.0, *)
 @objc(LegacyMenuViewImplementation)
 public class LegacyMenuViewImplementation: MenuViewImplementation {
