@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.platforms    = { :ios => "13.4" }
   s.swift_versions = ['5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '5.9']
-  s.source       = { :http => "https://github.com/ExodusMovement/react-native-menu/archive/refs/tags/v#{s.version}.tar.gz", :sha256 => "7b1d424e551ce01f1ed2e323125fc8c2c111f0824426c1e6a7613c95d759655d" }
+  s.source       = { :http => "https://github.com/ExodusMovement/react-native-menu/archive/refs/tags/v#{s.version}.tar.gz", :sha256 => "d38dea170cd99ba8acd37afeb05f0ee9d6800757a8c577593e44de4c23aa7f24" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
   s.exclude_files = "ios/Menu-Bridging-Header.h"
