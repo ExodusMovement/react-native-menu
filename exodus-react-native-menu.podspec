@@ -10,10 +10,12 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
 
-  s.platforms    = { :ios => "13.4", :visionos => "1.0"}
+  s.platforms    = { :ios => "13.4" }
+  s.swift_versions = ['5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '5.9']
   s.source       = { :git => "https://github.com/ExodusMovement/react-native-menu.git", :tag => "v#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.exclude_files = "ios/Menu-Bridging-Header.h"
 
   s.dependency "React-Core"
 
