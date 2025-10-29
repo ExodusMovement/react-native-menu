@@ -12,27 +12,20 @@ Pod::Spec.new do |s|
 
   s.platforms    = { :ios => "13.4" }
   s.swift_versions = ['5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '5.9']
-  s.source       = { :http => "https://github.com/ExodusMovement/react-native-menu/archive/refs/tags/v#{s.version}.tar.gz", :sha256 => "d38dea170cd99ba8acd37afeb05f0ee9d6800757a8c577593e44de4c23aa7f24" }
+  s.source       = { :git => "https://github.com/ExodusMovement/react-native-menu.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
-  s.exclude_files = "ios/Menu-Bridging-Header.h"
-
-  s.dependency "React-Core"
-
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'SWIFT_OBJC_INTERFACE_HEADER_NAME' => 'exodus-react-native-menu-Swift.h',
+    'SWIFT_OBJC_BRIDGING_HEADER' => '$(PODS_TARGET_SRCROOT)/ios/Menu-Bridging-Header.h',
     'CLANG_CXX_LANGUAGE_STANDARD' => 'c++17'
   }
 
+  install_modules_dependencies(s)
+
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1'
     s.compiler_flags = '-DRCT_NEW_ARCH_ENABLED=1'
-    s.dependency "React-RCTFabric"
-    s.dependency "React-Codegen"
-    s.dependency "RCT-Folly"
-    s.dependency "RCTRequired"
-    s.dependency "RCTTypeSafety"
-    s.dependency "ReactCommon/turbomodule/core"
   end
 end
 
