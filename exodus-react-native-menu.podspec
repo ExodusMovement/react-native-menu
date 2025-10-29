@@ -10,11 +10,26 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
 
-  s.platforms    = { :ios => "11.0", :visionos => "1.0"}
-  s.source       = { :git => "https://github.com/ExodusMovement/react-native-menu.git", :tag => "#{s.version}" }
+  s.platforms    = { :ios => "13.4", :visionos => "1.0"}
+  s.source       = { :git => "https://github.com/ExodusMovement/react-native-menu.git", :tag => "v#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
-  install_modules_dependencies(s)
+  s.dependency "React-Core"
+
+  if ENV['RCT_NEW_ARCH_ENABLED'] == '1'
+    s.compiler_flags = '-DRCT_NEW_ARCH_ENABLED=1'
+    s.pod_target_xcconfig = {
+      'DEFINES_MODULE' => 'YES',
+      'SWIFT_OBJC_INTERFACE_HEADER_NAME' => 'exodus-react-native-menu-Swift.h'
+    }
+
+    s.dependency "React-RCTFabric"
+    s.dependency "React-Codegen"
+    s.dependency "RCT-Folly"
+    s.dependency "RCTRequired"
+    s.dependency "RCTTypeSafety"
+    s.dependency "ReactCommon/turbomodule/core"
+  end
 end
 
