@@ -10,6 +10,10 @@ import UIKit
 @objc(MenuViewImplementation)
 public class MenuViewImplementation: UIButton {
 
+    public override var canBecomeFirstResponder: Bool {
+        return false
+    }
+
     @objc public var actions: [NSDictionary]? {
         didSet {
             guard let actions = self.actions else {
@@ -60,6 +64,7 @@ public class MenuViewImplementation: UIButton {
     }
    
     public override func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        self.window?.endEditing(true)
         sendMenuOpen()
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ in
             guard let self = self else { return nil }
